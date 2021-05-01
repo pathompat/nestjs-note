@@ -41,7 +41,9 @@ export class NotesController {
   @Get(':id')
   @ApiOkResponse({ type: Note })
   async findOne(@Param('id') id: string) {
-    return await this.notesService.findOne(id);
+    const note = await this.notesService.findOne(id);
+    if(!note) throw new BadRequestException('Not found');
+    return note;
   }
 
   @Patch(':id')
@@ -58,7 +60,7 @@ export class NotesController {
   @HttpCode(HttpStatus.NO_CONTENT)
   async remove(@Param('id') id: string) {
     const note = await this.notesService.remove(id);
-    if(!note) throw new BadRequestException('Not found')
+    if(!note) throw new BadRequestException('Not found');
     return;
   }
 }
