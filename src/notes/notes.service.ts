@@ -27,7 +27,7 @@ export class NotesService {
   }
 
   update(id: string, updateNoteDto: UpdateNoteDto) {
-    return this.noteModel.findByIdAndUpdate(id, updateNoteDto).catch(err => {
+    return this.noteModel.findByIdAndUpdate(id, updateNoteDto, { new: true }).catch(err => {
       console.log(err)
     });
   }
