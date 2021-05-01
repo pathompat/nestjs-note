@@ -3,6 +3,7 @@ Note API using Nest.js Framework
 
 ## Requirement
 
+* [Node.js](https://nodejs.org/en/)
 * [MongoDB Community Edition v.4.4](https://docs.mongodb.com/manual/administration/install-community/)
 
 ## Installation
