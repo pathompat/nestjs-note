@@ -27,10 +27,15 @@ export class NotesService {
   }
 
   update(id: string, updateNoteDto: UpdateNoteDto) {
-    return '' //this.noteModel.findByIdAndUpdate(id, updateNoteDto);
+    return this.noteModel.findByIdAndUpdate(id, updateNoteDto)
+      .catch(err => {
+        console.log(err)
+      });
   }
 
   remove(id: string) {
-    return this.noteModel.findByIdAndDelete(id);
+    return this.noteModel.findByIdAndRemove(id).catch(err => {
+      console.log(err)
+    });
   }
 }
