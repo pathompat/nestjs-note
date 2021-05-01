@@ -1,23 +1,27 @@
-import { IsOptional, IsNotEmpty, IsDefined, IsDateString, IsArray } from 'class-validator'
+import { IsOptional, IsNotEmpty, IsDefined, IsArray } from 'class-validator'
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger'
 
 export class CreateNoteDto {
-  @ApiProperty()
+  @ApiProperty({
+    type: String,
+    description: `Note's title/topic`
+  })
   @IsDefined()
   @IsNotEmpty()
   title: string
 
-  @ApiProperty()
+  @ApiProperty({
+    type: String,
+    description: `Note's inner content`
+  })
   @IsDefined()
   @IsNotEmpty()
   content: string
 
-  @ApiPropertyOptional()
-  @IsOptional()
-  @IsDateString()
-  createdAt: Date
-
-  @ApiPropertyOptional()
+  @ApiPropertyOptional({
+    type: [String],
+    description: `Related tags`
+  })
   @IsOptional()
   @IsArray()
   tags: string[]

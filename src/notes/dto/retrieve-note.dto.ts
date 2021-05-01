@@ -3,11 +3,11 @@ import { ApiPropertyOptional } from '@nestjs/swagger'
 
 export class RetrieveNoteDto {
 
-  @ApiPropertyOptional()
-  @IsOptional()
-  tag: string
-
-  @ApiPropertyOptional()
+  @ApiPropertyOptional({
+    type: [String],
+    description: `Sort column`,
+    default: ['createdAt:asc']
+  })
   @IsOptional()
   @IsIn(['createdAt:asc', 'createdAt:desc','title:asc', 'title:desc'], {each: true})
   sort: string[]

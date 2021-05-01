@@ -1,5 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
+import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger'
 
 export type NoteDocument = Note & Document;
 
@@ -12,18 +13,22 @@ export class Note {
       required: true,
       type: String
   })
+  @ApiProperty({ type: String })
   title: string;
 
   @Prop({
     required: true,
     type: String
   })
-  content: number;
+  @ApiProperty({ type: String })
+  content: string;
 
   @Prop()
+  @ApiProperty({ type: Date })
   createdAt: Date;
 
   @Prop([String])
+  @ApiProperty({ type: [String] })
   tags: string[];
 }
 
