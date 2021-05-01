@@ -54,7 +54,7 @@ export class NotesController {
 
   @Delete(':id')
   @ApiBadRequestResponse({ description: 'Bad request.' })
-  @ApiNoContentResponse()
+  @ApiNoContentResponse({ description: 'The record has been successfully deleted.' })
   @HttpCode(HttpStatus.NO_CONTENT)
   async remove(@Param('id') id: string) {
     const note = await this.notesService.remove(id);
